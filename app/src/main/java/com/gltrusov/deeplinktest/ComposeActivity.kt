@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -21,6 +22,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import androidx.navigation.navDeepLink
 import androidx.navigation.navigation
+import com.gltrusov.deeplinktest.composable.ComposeScreenInFile
 import com.gltrusov.deeplinktest.ui.theme.DeeplinkTestTheme
 
 class ComposeActivity : ComponentActivity() {
@@ -37,14 +39,23 @@ class ComposeActivity : ComponentActivity() {
 
                     NavHost(navController = navController, startDestination = "home") {
                         composable("home") {
-                            Box(
+                            Column(
                                 modifier = Modifier.fillMaxSize(),
-                                contentAlignment = Alignment.Center
+                                horizontalAlignment = Alignment.CenterHorizontally
                             ) {
                                 Button(onClick = { navController.navigate("detail") }) {
                                     Text(text = "To detail")
                                 }
+                                Button(onClick = { navController.navigate("file") }) {
+                                    Text(text = "To file")
+                                }
                             }
+                        }
+
+                        composable(
+                            route = "file"
+                        ) {
+                            ComposeScreenInFile()
                         }
 
                         composable(

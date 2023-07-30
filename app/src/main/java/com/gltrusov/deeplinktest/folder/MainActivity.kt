@@ -18,9 +18,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-//        activityManager.runningAppProcesses.forEach {
-//            Log.d("MyTest", it.processName)
-//        }
+
+
+
+        val example = "https://github.com/Glebasta33/DeeplinkTest/blob/master/app/src/main/java/com/gltrusov/deeplinktest/ComposeActivity.kt"
+        val baseUrl = "https://github.com/Glebasta33/DeeplinkTest/blob/master/app/src/main/java"
+        val packageName = activityManager.runningAppProcesses[0].processName.replace('.', '/')
+        val currentFileName = this.javaClass.name.replace('.', '/')
+
+
+        Log.d("MyTest", currentFileName)
+
+        val link = "$baseUrl/$currentFileName.kt"
+
+        Log.d("MyTest", link)
 
         findViewById<Button>(R.id.btn_test).setOnClickListener {
             Intent(this, ComposeActivity::class.java).apply {
