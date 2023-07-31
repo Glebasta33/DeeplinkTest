@@ -1,11 +1,13 @@
 package com.gltrusov.deeplinktest.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.gltrusov.deeplinktest.R
+import com.gltrusov.deeplinktest.utils.createLinkToClass
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,6 +30,9 @@ class SecondFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+        val link = createLinkToClass(this.javaClass.name, this.requireContext())
+        Log.d("MyTest", "Fragment: $link")
     }
 
     override fun onCreateView(
